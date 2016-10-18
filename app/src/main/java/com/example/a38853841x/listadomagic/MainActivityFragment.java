@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -25,16 +26,30 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+
         ListView lvCards = (ListView) view.findViewById(R.id.lvCards);
 
-        items = new ArrayList<>();
+    //    items = new ArrayList<>();
+
+
+        String[] data = {
+
+                "Angel Serra",
+                "Sol Ring",
+                "Royal Assasin",
+                "Mithra Factory",
+                "Cocatrize",
+                "Force of Nature",
+                "Counter Spell"
+        };
+
+        items = new ArrayList<>(Arrays.asList(data));
         adapter = new ArrayAdapter<>(
                 getContext(),
                 R.layout.lv_cards_row,
                 R.id.tvCard,
                 items
-                );
-
+        );
         lvCards.setAdapter(adapter);
 
         return view;
