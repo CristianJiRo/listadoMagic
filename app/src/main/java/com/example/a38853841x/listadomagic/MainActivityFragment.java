@@ -97,15 +97,23 @@ public class MainActivityFragment extends Fragment {
 
     }
 
-    private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
+    private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Carta>> {
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected ArrayList<Carta> doInBackground(Void... params) {
             MagicApi api = new MagicApi();
             ArrayList<Carta> result = api.getCartes();
             Log.d("DEBUG", result.toString());
 
-            return null;
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Carta> cartas) {
+            adapter.clear();
+            for (Carta card : cartas){
+                adapter.add(card.getTitle());
+            }
         }
     }
 
