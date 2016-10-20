@@ -1,5 +1,6 @@
 package com.example.a38853841x.listadomagic;
 
+import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -90,10 +91,23 @@ public class MainActivityFragment extends Fragment {
 
 
     private void refresh(){
-        MagicApi api = new MagicApi();
-        String result = api.getCartes();
 
-        Log.d("DEBUG", result);
+        RefreshDataTask task = new RefreshDataTask();
+        task.execute();
 
     }
+
+    private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            MagicApi api = new MagicApi();
+            String result = api.getCartes();
+
+            Log.d("DEBUG", result);
+
+            return null;
+        }
+    }
 }
+
