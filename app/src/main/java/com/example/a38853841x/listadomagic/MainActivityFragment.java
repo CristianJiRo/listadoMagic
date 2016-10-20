@@ -102,12 +102,13 @@ public class MainActivityFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... params) {
             MagicApi api = new MagicApi();
-            String result = api.getCartes();
-
-            Log.d("DEBUG", result);
+            ArrayList<Carta> result = api.getCartes();
+            Log.d("DEBUG", result.toString());
 
             return null;
         }
     }
+
+
 }
 

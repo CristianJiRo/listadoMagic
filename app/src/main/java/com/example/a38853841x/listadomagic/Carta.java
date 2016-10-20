@@ -14,7 +14,6 @@ public class Carta {
     private String type;
     private String imageUrl;
 
-
     public String getTitle() {
         return title;
     }

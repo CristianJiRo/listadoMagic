@@ -2,32 +2,65 @@ package com.example.a38853841x.listadomagic;
 
 import android.net.Uri;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 
 /**
  * Created by Kamelot on 20/10/2016.
  */
 
-public class MagicApi {
+class MagicApi {
     private final String Base_URL = "https://api.magicthegathering.io/v1/cards";
 
-    String getCartes() {
+    ArrayList<Carta> getCartes() {
         Uri builtUri = Uri.parse(Base_URL)
             .buildUpon()
-            .appendPath("name")
-            .appendPath("imageUrl")
-            .appendPath("type")
             .build();
         String url = builtUri.toString();
+        return doCall(url);
+    }
+
+    private ArrayList<Carta> doCall(String url) {
         try {
             String JsonResponse = HttpUtils.get(url);
-            return JsonResponse;
+            return processJson(JsonResponse);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
+
+        }
+
+    private ArrayList<Carta> processJson(String jsonResponse) {
+
+        ArrayList<Carta> cards = new ArrayList<>();
+            try {
+                JSONObject data = new JSONObject(jsonResponse);
+                JSONArray jsonCartas = data.getJSONArray("cards");
+                for (int i = 0; i < jsonCartas.length(); i++) {
+                    JSONObject jsonCarta = jsonCartas.getJSONObject(i);
+
+                    Carta carta = new Carta();
+                    carta.setTitle(jsonCarta.getString("name"));
+                    carta.setType(jsonCarta.getString("type"));
+                    carta.setImageUrl(jsonCarta.getString("imageUrl"));
+
+                    cards.add(carta);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+               return cards;
     }
 }
+
+
+
 
 
