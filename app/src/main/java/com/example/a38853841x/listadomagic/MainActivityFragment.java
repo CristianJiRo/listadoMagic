@@ -54,7 +54,9 @@ public class MainActivityFragment extends Fragment {
                 "Cocatrize",
                 "Force of Nature",
                 "Counter Spell"
+
         };
+
 
         items = new ArrayList<>(Arrays.asList(data));
         adapter = new ArrayAdapter<>(
@@ -63,6 +65,8 @@ public class MainActivityFragment extends Fragment {
                 R.id.tvCard,
                 items
         );
+
+
         lvCards.setAdapter(adapter);
 
         return view;
