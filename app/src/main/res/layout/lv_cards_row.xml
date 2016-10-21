@@ -6,7 +6,10 @@
     android:layout_height="match_parent">
 
     <TextView
+        style="@style/Base.TextAppearance.AppCompat.Medium"
         android:text="TextView"
+        android:gravity="center_vertical"
+        android:minHeight="?android:attr/listPreferredItemHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvCard"
@@ -14,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="8dp"/>
 
 </android.support.constraint.ConstraintLayout>

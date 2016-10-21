@@ -13,6 +13,16 @@ public class Carta {
     private String title;
     private String type;
     private String imageUrl;
+    private String rarity;
+    public String getRarity() {
+        return rarity;
+    }
+
+    public void setRarity(String rarity) {
+        this.rarity = rarity;
+    }
+
+
 
     public String getTitle() {
         return title;
@@ -44,6 +54,7 @@ public class Carta {
                 "title='" + title + '\'' +
                 ", type='" + type + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
+                ", rarity='" + rarity + '\'' +
                 '}';
     }
 }
