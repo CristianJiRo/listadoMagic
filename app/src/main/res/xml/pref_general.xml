@@ -2,26 +2,52 @@
 
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
-    <EditTextPreference
-        android:capitalize="words"
-        android:defaultValue="white"
+    <ListPreference
+        android:defaultValue="-1"
+        android:entries="@array/pref_opcions_consulta_list_cards"
+        android:entryValues="@array/pref_opcions_consulta_list_cards_values"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
         android:key="colors"
-        android:inputType="textCapWords"
-        android:maxLines="1"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="Colors" />
+        android:title="Color" />
 
     <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it. -->
     <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
     <ListPreference
         android:defaultValue="-1"
-        android:entries="@array/pref_opcions_consulta_list_cards"
-        android:entryValues="@array/pref_opcions_consulta_list_values"
+        android:entries="@array/pref_opcions_consulta_list_rarity"
+        android:entryValues="@array/pref_opcions_consulta_list_rarity_values"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
         android:key="rarity"
         android:title="Rarity" />
+    <PreferenceCategory android:title="Colors">
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:title="Black"
+            android:key="check_box_preference_1" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:title="White"
+            android:key="check_box_preference_1" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:title="Red"
+            android:key="check_box_preference_1" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:title="Green"
+            android:key="check_box_preference_1" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:title="Blue"
+            android:key="check_box_preference_1" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:title="Uncolor"
+            android:key="check_box_preference_1" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

@@ -21,12 +21,37 @@
     <string-array name="pref_opcions_consulta_list_cards">
         <item>White</item>
         <item>Black</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Uncolor</item>
     </string-array>
 
-    <string-array name="pref_opcions_consulta_list_values">
+    <string-array name="pref_opcions_consulta_list_cards_values">
         <item>white</item>
         <item>black</item>
+        <item>red</item>
+        <item>green</item>
+        <item>blue</item>
+        <item>uncolor</item>
     </string-array>
+
+    <string-array name="pref_opcions_consulta_list_rarity">
+        <item>Common</item>
+        <item>Uncommon</item>
+        <item>Rare</item>
+        <item>Epic</item>
+        <item>Legendary</item>
+    </string-array>
+
+    <string-array name="pref_opcions_consulta_list_rarity_values">
+        <item>Common</item>
+        <item>Uncommon</item>
+        <item>Rare</item>
+        <item>Epic</item>
+        <item>Legendary</item>
+    </string-array>
+
 
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
