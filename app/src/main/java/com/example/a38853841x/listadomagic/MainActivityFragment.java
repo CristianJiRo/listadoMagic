@@ -1,6 +1,8 @@
 package com.example.a38853841x.listadomagic;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -104,12 +106,19 @@ public class MainActivityFragment extends Fragment {
 
         @Override
         protected ArrayList<Carta> doInBackground(Void... params) {
-            MagicApi api = new MagicApi();
-            ArrayList<Carta> result = api.getCartes();
-            Log.d("DEBUG", result.toString());
+            //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            //String colors = preferences.getString("colors", "white");
+            //String rarity = preferences.getString("rarity", "common");
+
+            ArrayList<Carta> result = null;
+
+                MagicApi api = new MagicApi();
+                result = api.getCartes();
+                Log.d("DEBUG", result.toString());
 
             return result;
         }
+
 
         @Override
         protected void onPostExecute(ArrayList<Carta> cartas) {
