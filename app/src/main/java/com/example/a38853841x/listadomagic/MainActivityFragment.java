@@ -105,20 +105,27 @@ public class MainActivityFragment extends Fragment {
     private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Carta>> {
 
         @Override
-        protected ArrayList<Carta> doInBackground(Void... params) {
-            //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            //String colors = preferences.getString("colors", "white");
-            //String rarity = preferences.getString("rarity", "common");
+        protected ArrayList<Carta> doInBackground(Void... voids) {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String color = preferences.getString("color", "any");
+            String rarity = preferences.getString("rarity", "any");
 
+            MagicApi api = new MagicApi();
             ArrayList<Carta> result = null;
 
-                MagicApi api = new MagicApi();
+            if ((rarity.equals("any"))&& (color.equals("any"))){
+
                 result = api.getCartes();
-                Log.d("DEBUG", result.toString());
+            }
+            else {
+
+                result = api.getCartes();
+            }
+
+            Log.d("DEBUG", result.toString());
 
             return result;
         }
-
 
         @Override
         protected void onPostExecute(ArrayList<Carta> cartas) {
@@ -128,7 +135,6 @@ public class MainActivityFragment extends Fragment {
             }
         }
     }
-
 
 }
 

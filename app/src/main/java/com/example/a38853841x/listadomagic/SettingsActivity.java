@@ -178,8 +178,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // updated to reflect the new value, per the Android Design
             // guidelines.
 
-            //bindPreferenceSummaryToValue(findPreference("colors"));
-            //bindPreferenceSummaryToValue(findPreference("rarity"));
+            bindPreferenceSummaryToValue(findPreference("colors"));
+            bindPreferenceSummaryToValue(findPreference("rarity"));
         }
 
         @Override

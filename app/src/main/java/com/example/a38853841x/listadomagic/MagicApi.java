@@ -25,12 +25,14 @@ class MagicApi {
         return doCall(url);
     }
 
-    ArrayList<Carta> getCartesDefault() {
+    ArrayList<Carta> getCartesFilter(String color) {
         Uri builtUri = Uri.parse(Base_URL)
                 .buildUpon()
-                .appendPath("color")
+                .appendPath("colors")
+                .appendQueryParameter("colors", color)
                 .build();
         String url = builtUri.toString();
+        System.out.println(url);
         return doCall(url);
     }
 
@@ -61,6 +63,12 @@ class MagicApi {
                     carta.setType(jsonCarta.getString("type"));
                     carta.setImageUrl(jsonCarta.getString("imageUrl"));
                     carta.setRarity(jsonCarta.getString("rarity"));
+                    if (jsonCarta.isNull("colors")){
+                        carta.setColors("null");
+                    }
+                    else{
+                        carta.setColors(jsonCarta.getString("colors"));
+                    }
 
                     cards.add(carta);
                 }

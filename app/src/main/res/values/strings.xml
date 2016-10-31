@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">ListadoMagic</string>
+
     <string name="action_settings">Settings</string>
+
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
@@ -9,11 +11,13 @@
     <string name="pref_header_general">General</string>
 
     <string name="pref_title_social_recommendations">Enable social recommendations</string>
+
     <string name="pref_description_social_recommendations">Recommendations for people to contact
         based on your message history
     </string>
 
     <string name="pref_title_display_name">Display name</string>
+
     <string name="pref_default_display_name">John Smith</string>
 
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
@@ -24,7 +28,7 @@
         <item>Red</item>
         <item>Green</item>
         <item>Blue</item>
-        <item>Uncolor</item>
+        <item>Any</item>
     </string-array>
 
     <string-array name="pref_opcions_consulta_list_cards_values">
@@ -33,7 +37,7 @@
         <item>red</item>
         <item>green</item>
         <item>blue</item>
-        <item>uncolor</item>
+        <item>any</item>
     </string-array>
 
     <string-array name="pref_opcions_consulta_list_rarity">
@@ -42,16 +46,17 @@
         <item>Rare</item>
         <item>Epic</item>
         <item>Legendary</item>
+        <item>Any</item>
     </string-array>
 
     <string-array name="pref_opcions_consulta_list_rarity_values">
-        <item>Common</item>
-        <item>Uncommon</item>
-        <item>Rare</item>
-        <item>Epic</item>
-        <item>Legendary</item>
+        <item>common</item>
+        <item>uncommon</item>
+        <item>rare</item>
+        <item>epic</item>
+        <item>legendary</item>
+        <item>any</item>
     </string-array>
-
 
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
