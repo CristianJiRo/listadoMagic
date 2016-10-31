@@ -1,23 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="5dp">
 
-    <TextView
-        style="@style/Base.TextAppearance.AppCompat.Medium"
-        android:text="TextView"
-        android:gravity="center_vertical"
-        android:minHeight="?android:attr/listPreferredItemHeight"
+    <ImageView
+        android:id="@+id/ivPosterImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvCard"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:maxHeight="70dp"
+        android:scaleType="fitXY" />
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/ivPosterImage"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:hint="Exemple Title"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvRarity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tvCard"
+            android:layout_below="@+id/tvCard"
+            android:hint="Rarity Exemple"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvColors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvRarity"
+            android:ellipsize="end"
+            android:hint="Colors Exenple"
+            android:maxLines="1"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
