@@ -23,10 +23,8 @@ import java.util.Arrays;
  */
 public class MainActivityFragment extends Fragment {
 
-    //private ArrayList<String> items;
-    //private ArrayAdapter<String> adapter;
     private ArrayList<Carta> items;
-    private ArrayAdapter<Carta> adapter;
+    private CardAdapter adapter;
 
     public MainActivityFragment() {
     }
@@ -46,15 +44,10 @@ public class MainActivityFragment extends Fragment {
 
         ListView lvCards = (ListView) view.findViewById(R.id.lvCards);
 
-    //    items = new ArrayList<>();
-
-
-
         items = new ArrayList<>();
-        adapter = new ArrayAdapter<>(
+        adapter = new CardAdapter(
                 getContext(),
                 R.layout.lv_cards_row,
-                R.id.tvCard,
                 items
         );
 
@@ -101,13 +94,13 @@ public class MainActivityFragment extends Fragment {
         @Override
         protected ArrayList<Carta> doInBackground(Void... voids) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String color = preferences.getString("colors", "null");
+            String color = preferences.getString("colors", "Uncolor");
             String rarity = preferences.getString("rarity", "any");
 
             MagicApi api = new MagicApi();
             ArrayList<Carta> result;
 
-            if ((rarity.equals("any"))&& (color.equals("null"))){
+            if ((rarity.equals("any"))&& (color.equals("Uncolor"))){
 
                 result = api.getCartes();
             }
@@ -117,13 +110,13 @@ public class MainActivityFragment extends Fragment {
                 result = api.getCartesFilterRarity(rarity);
 
             }
-            else if (!(rarity.equals("any")) && (color.equals("null"))){
+            else if (!(rarity.equals("any")) && (color.equals("Uncolor"))){
 
                 result = api.getCartesFilterRarity(rarity);
 
             }
 
-            else  if ((rarity.equals("any"))&& !(color.equals("null"))){
+            else  if ((rarity.equals("any"))&& !(color.equals("Uncolor"))){
 
                 result = api.getCartesFilterColor(color);
 

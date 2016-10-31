@@ -82,8 +82,9 @@ class MagicApi {
                     carta.setType(jsonCarta.getString("type"));
                     carta.setImageUrl(jsonCarta.getString("imageUrl"));
                     carta.setRarity(jsonCarta.getString("rarity"));
+
                     if (jsonCarta.isNull("colors")){
-                        carta.setColors("null");
+                        carta.setColors("Uncolor");
                     }
                     else{
                         carta.setColors(jsonCarta.getString("colors"));

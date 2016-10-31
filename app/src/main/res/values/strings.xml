@@ -37,7 +37,7 @@
         <item>Red</item>
         <item>Green</item>
         <item>Blue</item>
-        <item>null</item>
+        <item>Uncolor</item>
     </string-array>
 
     <string-array name="pref_opcions_consulta_list_rarity">
