@@ -99,19 +99,37 @@ public class MainActivityFragment extends Fragment {
         @Override
         protected ArrayList<Carta> doInBackground(Void... voids) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String color = preferences.getString("color", "any");
+            String color = preferences.getString("colors", "null");
             String rarity = preferences.getString("rarity", "any");
 
             MagicApi api = new MagicApi();
             ArrayList<Carta> result;
 
-            if ((rarity.equals("any"))&& (color.equals("any"))){
+            if ((rarity.equals("any"))&& (color.equals("null"))){
 
                 result = api.getCartes();
             }
-            else {
 
-                result = api.getCartes();
+            else if (rarity.equals("Basic Land")){
+
+                result = api.getCartesFilterRarity(rarity);
+
+            }
+            else if (!(rarity.equals("any")) && (color.equals("null"))){
+
+                result = api.getCartesFilterRarity(rarity);
+
+            }
+
+            else  if ((rarity.equals("any"))&& !(color.equals("null"))){
+
+                result = api.getCartesFilterColor(color);
+
+            }
+
+            else {
+                result = api.getCartesFilters(color, rarity);
+
             }
 
             Log.d("DEBUG", result.toString());

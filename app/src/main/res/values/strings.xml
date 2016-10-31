@@ -32,29 +32,31 @@
     </string-array>
 
     <string-array name="pref_opcions_consulta_list_cards_values">
-        <item>white</item>
-        <item>black</item>
-        <item>red</item>
-        <item>green</item>
-        <item>blue</item>
-        <item>any</item>
+        <item>White</item>
+        <item>Black</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>null</item>
     </string-array>
 
     <string-array name="pref_opcions_consulta_list_rarity">
         <item>Common</item>
         <item>Uncommon</item>
         <item>Rare</item>
-        <item>Epic</item>
-        <item>Legendary</item>
+        <item>Mythic Rare</item>
+        <item>Special</item>
+        <item>Basic Land</item>
         <item>Any</item>
     </string-array>
 
     <string-array name="pref_opcions_consulta_list_rarity_values">
-        <item>common</item>
-        <item>uncommon</item>
-        <item>rare</item>
-        <item>epic</item>
-        <item>legendary</item>
+        <item>Common</item>
+        <item>Uncommon</item>
+        <item>Rare</item>
+        <item>Mythic Rare</item>
+        <item>Special</item>
+        <item>Basic Land</item>
         <item>any</item>
     </string-array>
 

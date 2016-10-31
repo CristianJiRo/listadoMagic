@@ -25,16 +25,35 @@ class MagicApi {
         return doCall(url);
     }
 
-    ArrayList<Carta> getCartesFilter(String color) {
+
+    ArrayList<Carta> getCartesFilterRarity (String rarity) {
         Uri builtUri = Uri.parse(Base_URL)
                 .buildUpon()
-                .appendPath("colors")
-                .appendQueryParameter("colors", color)
+                .appendQueryParameter("rarity", rarity)
                 .build();
         String url = builtUri.toString();
-        System.out.println(url);
         return doCall(url);
     }
+
+    ArrayList<Carta> getCartesFilterColor (String colors) {
+        Uri builtUri = Uri.parse(Base_URL)
+                .buildUpon()
+                .appendQueryParameter("colors", colors)
+                .build();
+        String url = builtUri.toString();
+        return doCall(url);
+    }
+
+    ArrayList<Carta> getCartesFilters (String colors, String rarity) {
+        Uri builtUri = Uri.parse(Base_URL)
+                .buildUpon()
+                .appendQueryParameter("colors", colors)
+                .appendQueryParameter("rarity", rarity)
+                .build();
+        String url = builtUri.toString();
+        return doCall(url);
+    }
+
 
     private ArrayList<Carta> doCall(String url) {
         try {
