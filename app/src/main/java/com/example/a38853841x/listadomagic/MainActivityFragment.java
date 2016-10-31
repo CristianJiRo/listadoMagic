@@ -23,8 +23,10 @@ import java.util.Arrays;
  */
 public class MainActivityFragment extends Fragment {
 
-    private ArrayList<String> items;
-    private ArrayAdapter<String> adapter;
+    //private ArrayList<String> items;
+    //private ArrayAdapter<String> adapter;
+    private ArrayList<Carta> items;
+    private ArrayAdapter<Carta> adapter;
 
     public MainActivityFragment() {
     }
@@ -141,7 +143,8 @@ public class MainActivityFragment extends Fragment {
         protected void onPostExecute(ArrayList<Carta> cartas) {
             adapter.clear();
             for (Carta card : cartas){
-                adapter.add(card.getTitle());
+                //adapter.add(card.getTitle());
+                adapter.add(card);
             }
         }
     }
