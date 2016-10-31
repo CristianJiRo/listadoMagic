@@ -11,7 +11,8 @@
         android:layout_centerVertical="true"
         android:adjustViewBounds="true"
         android:maxHeight="70dp"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,8 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:hint="Exemple Title"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/tvRarity"
@@ -36,8 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/tvCard"
             android:layout_below="@+id/tvCard"
-            android:hint="Rarity Exemple"
-            android:textSize="12sp" />
+            android:hint="Rarity Exemple" />
 
         <TextView
             android:id="@+id/tvColors"

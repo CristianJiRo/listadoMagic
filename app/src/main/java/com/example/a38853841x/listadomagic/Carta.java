@@ -2,13 +2,14 @@ package com.example.a38853841x.listadomagic;
 
 import android.support.design.widget.Snackbar;
 
+import java.io.Serializable;
 import java.security.PrivateKey;
 
 /**
  * Created by Kamelot on 20/10/2016.
  */
 
-public class Carta {
+public class Carta implements Serializable {
 
     private String title;
     private String type;

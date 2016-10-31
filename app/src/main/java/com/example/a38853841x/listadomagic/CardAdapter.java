@@ -47,7 +47,7 @@ public class CardAdapter extends ArrayAdapter<Carta> {
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
         tvCard.setText(card.getTitle());
         tvRarity.setText("Rarity: " + card.getRarity());
-        tvColors.setText("Colors: " + card.getColors());
+        tvColors.setText("Colors: " + card.getColors().replace("[","").replace("\"","").replace("]",""));
         tvType.setText("Type: " + card.getType());
         Glide.with(getContext()).load(card.getImageUrl()).into(ivPosterImage);
 
