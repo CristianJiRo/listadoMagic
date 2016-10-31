@@ -47,20 +47,8 @@ public class MainActivityFragment extends Fragment {
     //    items = new ArrayList<>();
 
 
-        String[] data = {
 
-                "Angel Serra",
-                "Sol Ring",
-                "Royal Assasin",
-                "Mithra Factory",
-                "Cocatrize",
-                "Force of Nature",
-                "Counter Spell"
-
-        };
-
-
-        items = new ArrayList<>(Arrays.asList(data));
+        items = new ArrayList<>();
         adapter = new ArrayAdapter<>(
                 getContext(),
                 R.layout.lv_cards_row,
@@ -90,10 +78,14 @@ public class MainActivityFragment extends Fragment {
             return true;
         }
 
-
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        refresh();
+    }
 
     private void refresh(){
 
@@ -111,7 +103,7 @@ public class MainActivityFragment extends Fragment {
             String rarity = preferences.getString("rarity", "any");
 
             MagicApi api = new MagicApi();
-            ArrayList<Carta> result = null;
+            ArrayList<Carta> result;
 
             if ((rarity.equals("any"))&& (color.equals("any"))){
 
