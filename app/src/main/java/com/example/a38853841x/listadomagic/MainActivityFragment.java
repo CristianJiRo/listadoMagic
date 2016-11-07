@@ -1,5 +1,6 @@
 package com.example.a38853841x.listadomagic;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
@@ -54,7 +55,10 @@ public class MainActivityFragment extends Fragment {
         lvCards.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                Carta carta = (Carta) adapterView.getItemAtPosition(i);
+                Intent intent = new Intent(getContext(), DetailActivity.class);
+                intent.putExtra("Carta", carta);
+                startActivity(intent);
             }
         });
 
