@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -33,7 +35,7 @@ public class DetailActivityFragment extends Fragment {
         Intent i = getActivity().getIntent();
 
         if (i != null) {
-            Carta carta = (Carta) i.getSerializableExtra("carta");
+            Carta carta = (Carta) i.getSerializableExtra("Carta");
 
             if (carta != null) {
                 updateUi(carta);
@@ -51,6 +53,13 @@ public class DetailActivityFragment extends Fragment {
         tvType = (TextView) view.findViewById(R.id.tvType);
         tvRarity = (TextView) view.findViewById(R.id.tvRarity);
         tvColors = (TextView) view.findViewById(R.id.tvColors);
+
+        tvTitle.setText(carta.getTitle());
+        tvType.setText(carta.getType());
+        tvRarity.setText(carta.getRarity());
+        tvColors.setText(carta.getColors());
+        Glide.with(getContext()).load(carta.getImageUrl()).into(ivPosterImage);
+
 
     }
 }
