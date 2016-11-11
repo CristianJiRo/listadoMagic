@@ -1,6 +1,7 @@
 package com.example.a38853841x.listadomagic;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.a38853841x.listadomagic.databinding.LvCardsRowBinding;
 
 import java.util.List;
 
@@ -30,29 +32,30 @@ public class CardAdapter extends ArrayAdapter<Carta> {
         Carta card = getItem(position);
         Log.w("XXXX", card.toString());
 
+        LvCardsRowBinding binding = null;
+
         // Mirem a veure si la View s'està reusant, si no es així "inflem" la View
         // https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView#row-view-recycling
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.lv_cards_row, parent, false);
+            binding = DataBindingUtil.inflate(inflater, R.layout.lv_cards_row, parent, false);
         }
 
-        // Unim el codi en les Views del Layout
-        TextView tvCard = (TextView) convertView.findViewById(R.id.tvCard);
-        TextView tvRarity = (TextView) convertView.findViewById(R.id.tvRarity);
-        TextView tvColors = (TextView) convertView.findViewById(R.id.tvColors);
-        TextView tvType = (TextView) convertView.findViewById(R.id.tvType);
-        ImageView ivPosterImage = (ImageView) convertView.findViewById(R.id.ivPosterImage);
+        else {
+
+            binding = DataBindingUtil.getBinding(convertView);
+        }
+
 
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
-        tvCard.setText(card.getTitle());
-        tvRarity.setText("Rarity: " + card.getRarity());
-        tvColors.setText("Colors: " + card.getColors().replace("[","").replace("\"","").replace("]",""));
-        tvType.setText("Type: " + card.getType());
-        Glide.with(getContext()).load(card.getImageUrl()).into(ivPosterImage);
+        binding.tvCard.setText(card.getTitle());
+        binding.tvRarity.setText("Rarity: " + card.getRarity());
+        binding.tvColors.setText("Colors: " + card.getColors().replace("[","").replace("\"","").replace("]",""));
+        binding.tvType.setText("Type: " + card.getType());
+        Glide.with(getContext()).load(card.getImageUrl()).into(binding.ivPosterImage);
 
 
         // Retornem la View replena per a mostrarla
-        return convertView;
+        return binding.getRoot();
     }
 }

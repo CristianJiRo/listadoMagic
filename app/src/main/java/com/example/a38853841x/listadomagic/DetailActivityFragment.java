@@ -72,8 +72,8 @@ public class DetailActivityFragment extends Fragment {
 
         binding.tvTitle.setText(carta.getTitle());
         binding.tvType.setText(carta.getType());
-        binding.tvRarity.setText(carta.getRarity());
-        binding.tvColors.setText(carta.getColors());
+        binding.tvRarity.setText(carta.getRarity().replace("[\"","").replace("\"]",""));
+        binding.tvColors.setText(carta.getColors().replace("[\"","").replace("\"]",""));
         Glide.with(getContext()).load(carta.getImageUrl()).into(binding.ivPosterImage);
 
 
