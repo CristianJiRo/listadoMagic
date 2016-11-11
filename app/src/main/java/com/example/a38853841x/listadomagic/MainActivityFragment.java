@@ -2,6 +2,7 @@ package com.example.a38853841x.listadomagic;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -16,6 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.example.a38853841x.listadomagic.databinding.FragmentMainBinding;
+
 import java.util.ArrayList;
 
 /**
@@ -40,9 +44,13 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        //View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        ListView lvCards = (ListView) view.findViewById(R.id.lvCards);
+        //ListView lvCards = (ListView) view.findViewById(R.id.lvCards);
+
+        FragmentMainBinding binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_main, container, false);
+                View view = binding.getRoot();
 
         items = new ArrayList<>();
         adapter = new CardAdapter(
@@ -51,8 +59,9 @@ public class MainActivityFragment extends Fragment {
                 items
         );
 
-        lvCards.setAdapter(adapter);
-        lvCards.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        binding.lvCards.setAdapter(adapter);
+        binding.lvCards.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Carta carta = (Carta) adapterView.getItemAtPosition(i);
