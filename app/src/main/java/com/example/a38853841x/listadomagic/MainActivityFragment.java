@@ -114,33 +114,32 @@ public class MainActivityFragment extends Fragment {
             String color = preferences.getString("colors", "Uncolor");
             String rarity = preferences.getString("rarity", "any");
 
-            MagicApi api = new MagicApi();
             ArrayList<Carta> result;
 
             if ((rarity.equals("any"))&& (color.equals("Uncolor"))){
 
-                result = api.getCartes();
+                result = MagicApi.getCartes();
             }
 
             else if (rarity.equals("Basic Land")){
 
-                result = api.getCartesFilterRarity(rarity);
+                result = MagicApi.getCartesFilterRarity(rarity);
 
             }
             else if (!(rarity.equals("any")) && (color.equals("Uncolor"))){
 
-                result = api.getCartesFilterRarity(rarity);
+                result = MagicApi.getCartesFilterRarity(rarity);
 
             }
 
             else  if ((rarity.equals("any"))&& !(color.equals("Uncolor"))){
 
-                result = api.getCartesFilterColor(color);
+                result = MagicApi.getCartesFilterColor(color);
 
             }
 
             else {
-                result = api.getCartesFilters(color, rarity);
+                result = MagicApi.getCartesFilters(color, rarity);
 
             }
 

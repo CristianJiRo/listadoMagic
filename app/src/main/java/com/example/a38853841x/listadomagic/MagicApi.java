@@ -15,9 +15,9 @@ import java.util.ArrayList;
  */
 
 class MagicApi {
-    private final String Base_URL = "https://api.magicthegathering.io/v1/cards";
+    static final String Base_URL = "https://api.magicthegathering.io/v1/cards";
 
-    ArrayList<Carta> getCartes() {
+    static ArrayList<Carta> getCartes() {
         Uri builtUri = Uri.parse(Base_URL)
             .buildUpon()
             .build();
@@ -26,7 +26,7 @@ class MagicApi {
     }
 
 
-    ArrayList<Carta> getCartesFilterRarity (String rarity) {
+    static ArrayList<Carta> getCartesFilterRarity (String rarity) {
         Uri builtUri = Uri.parse(Base_URL)
                 .buildUpon()
                 .appendQueryParameter("rarity", rarity)
@@ -35,7 +35,7 @@ class MagicApi {
         return doCall(url);
     }
 
-    ArrayList<Carta> getCartesFilterColor (String colors) {
+    static ArrayList<Carta> getCartesFilterColor (String colors) {
         Uri builtUri = Uri.parse(Base_URL)
                 .buildUpon()
                 .appendQueryParameter("colors", colors)
@@ -44,7 +44,7 @@ class MagicApi {
         return doCall(url);
     }
 
-    ArrayList<Carta> getCartesFilters (String colors, String rarity) {
+    static ArrayList<Carta> getCartesFilters (String colors, String rarity) {
         Uri builtUri = Uri.parse(Base_URL)
                 .buildUpon()
                 .appendQueryParameter("colors", colors)
@@ -55,7 +55,7 @@ class MagicApi {
     }
 
 
-    private ArrayList<Carta> doCall(String url) {
+    static ArrayList<Carta> doCall(String url) {
         try {
             String JsonResponse = HttpUtils.get(url);
             return processJson(JsonResponse);
@@ -67,7 +67,7 @@ class MagicApi {
 
         }
 
-    private ArrayList<Carta> processJson(String jsonResponse) {
+    static ArrayList<Carta> processJson(String jsonResponse) {
 
         ArrayList<Carta> cards = new ArrayList<>();
             try {
