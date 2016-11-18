@@ -10,12 +10,17 @@ import static nl.qbusict.cupboard.CupboardFactory.cupboard;
  */
 
 
-public class DataMAnager {
+public class DataManager {
 
     private static UriHelper URI_HELPER = UriHelper.with(MagicContentProvider.AUTHORITY);
-        private static Uri MOVIE_URI = URI_HELPER.getUri(Carta.class);
+    private static Uri CARD_URI = URI_HELPER.getUri(Carta.class);
 
-                static void saveCards(ArrayList<Carta> movies, Context context) {
-                cupboard().withContext(context).put(MOVIE_URI, Carta.class, movies);
+    static void saveCards(ArrayList<Carta> movies, Context context) {
+            cupboard().withContext(context).put(CARD_URI, Carta.class, movies);
+    }
+
+
+    static void deleteCards(Context context) {
+                cupboard().withContext(context).delete(CARD_URI, "_id > ?", "1");
             }
 }

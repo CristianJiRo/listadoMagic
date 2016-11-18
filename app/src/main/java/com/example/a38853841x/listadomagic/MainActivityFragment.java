@@ -142,7 +142,8 @@ public class MainActivityFragment extends Fragment {
 
             Log.d("DEBUG", result.toString());
 
-            DataMAnager.saveCards(result, getContext());
+            DataManager.deleteCards(getContext());
+            DataManager.saveCards(result, getContext());
 
             return null;
         }
