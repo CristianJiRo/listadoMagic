@@ -3,7 +3,7 @@
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
     <ListPreference
-        android:defaultValue="1"
+        android:defaultValue="Uncolor"
         android:entries="@array/pref_opcions_consulta_list_cards"
         android:entryValues="@array/pref_opcions_consulta_list_cards_values"
         android:negativeButtonText="@null"
@@ -15,7 +15,7 @@
          dismiss it. -->
     <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
     <ListPreference
-        android:defaultValue="1"
+        android:defaultValue="any"
         android:entries="@array/pref_opcions_consulta_list_rarity"
         android:entryValues="@array/pref_opcions_consulta_list_rarity_values"
         android:negativeButtonText="@null"
