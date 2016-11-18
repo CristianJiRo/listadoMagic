@@ -14,9 +14,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.net.Uri;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import nl.littlerobots.cupboard.tools.provider.UriHelper;
+import static nl.qbusict.cupboard.CupboardFactory.cupboard;
+
 
 import com.example.a38853841x.listadomagic.databinding.FragmentMainBinding;
 
@@ -106,10 +110,10 @@ public class MainActivityFragment extends Fragment {
 
     }
 
-    private class RefreshDataTask extends AsyncTask<Void, Void, ArrayList<Carta>> {
+    private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
 
         @Override
-        protected ArrayList<Carta> doInBackground(Void... voids) {
+        protected Void doInBackground(Void... voids) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String color = preferences.getString("colors", "Uncolor");
             String rarity = preferences.getString("rarity", "any");
@@ -145,16 +149,11 @@ public class MainActivityFragment extends Fragment {
 
             Log.d("DEBUG", result.toString());
 
-            return result;
-        }
+            UriHelper helper = UriHelper.with(MagicContentProvider.AUTHORITY);
+            Uri cardUri = helper.getUri(Carta.class);
+            cupboard().withContext(getContext()).put(cardUri, Carta.class, result);
 
-        @Override
-        protected void onPostExecute(ArrayList<Carta> cartas) {
-            adapter.clear();
-            for (Carta card : cartas){
-                //adapter.add(card.getTitle());
-                adapter.add(card);
-            }
+            return null;
         }
     }
 }
