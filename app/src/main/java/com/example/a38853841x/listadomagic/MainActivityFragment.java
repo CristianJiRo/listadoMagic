@@ -14,16 +14,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.net.Uri;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
-import nl.littlerobots.cupboard.tools.provider.UriHelper;
-import static nl.qbusict.cupboard.CupboardFactory.cupboard;
-
-
 import com.example.a38853841x.listadomagic.databinding.FragmentMainBinding;
-
 import java.util.ArrayList;
 
 /**
@@ -149,9 +142,7 @@ public class MainActivityFragment extends Fragment {
 
             Log.d("DEBUG", result.toString());
 
-            UriHelper helper = UriHelper.with(MagicContentProvider.AUTHORITY);
-            Uri cardUri = helper.getUri(Carta.class);
-            cupboard().withContext(getContext()).put(cardUri, Carta.class, result);
+            DataMAnager.saveCards(result, getContext());
 
             return null;
         }
