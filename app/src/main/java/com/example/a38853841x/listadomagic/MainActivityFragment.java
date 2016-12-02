@@ -9,7 +9,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
+import android.database.Cursor;
 import android.view.LayoutInflater;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,10 +25,8 @@ import java.util.ArrayList;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class MainActivityFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
 
-    private ArrayList<Carta> items;
-    //private CardAdapter adapter;
     private CardCursorAdapter adapter;
 
     public MainActivityFragment() {
@@ -60,6 +61,8 @@ public class MainActivityFragment extends Fragment {
             }
         });
 
+        getLoaderManager().initLoader(0, null, this);
+
         return view;
     }
 
@@ -92,6 +95,21 @@ public class MainActivityFragment extends Fragment {
 
         RefreshDataTask task = new RefreshDataTask();
         task.execute();
+
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
 
     }
 
