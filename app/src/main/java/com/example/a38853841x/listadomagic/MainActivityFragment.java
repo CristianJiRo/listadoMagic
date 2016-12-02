@@ -25,7 +25,8 @@ import java.util.ArrayList;
 public class MainActivityFragment extends Fragment {
 
     private ArrayList<Carta> items;
-    private CardAdapter adapter;
+    //private CardAdapter adapter;
+    private CardCursorAdapter adapter;
 
     public MainActivityFragment() {
     }
@@ -41,21 +42,12 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //View view = inflater.inflate(R.layout.fragment_main, container, false);
-
-        //ListView lvCards = (ListView) view.findViewById(R.id.lvCards);
 
         FragmentMainBinding binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_main, container, false);
                 View view = binding.getRoot();
 
-        items = new ArrayList<>();
-        adapter = new CardAdapter(
-                getContext(),
-                R.layout.lv_cards_row,
-                items
-        );
-
+        adapter = new CardCursorAdapter(getContext(), Carta.class);
 
         binding.lvCards.setAdapter(adapter);
         binding.lvCards.setOnItemClickListener(new AdapterView.OnItemClickListener() {

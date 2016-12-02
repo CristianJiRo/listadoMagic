@@ -48,7 +48,7 @@ public class CardAdapter extends ArrayAdapter<Carta> {
 
 
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
-        binding.tvCard.setText(card.getTitle());
+        binding.tvTitle.setText(card.getTitle());
         binding.tvRarity.setText("Rarity: " + card.getRarity());
         binding.tvColors.setText("Colors: " + card.getColors().replace("[","").replace("\"","").replace("]",""));
         binding.tvType.setText("Type: " + card.getType());

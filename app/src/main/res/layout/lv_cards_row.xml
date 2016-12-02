@@ -36,8 +36,8 @@
                 android:id="@+id/tvRarity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/tvCard"
-                android:layout_below="@+id/tvCard"
+                android:layout_alignLeft="@+id/tvTitle"
+                android:layout_below="@+id/tvTitle"
                 android:hint="Rarity Exemple" />
 
             <TextView
