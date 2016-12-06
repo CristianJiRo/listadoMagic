@@ -1,5 +1,6 @@
 package com.example.a38853841x.listadomagic;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 public class MainActivityFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
 
     private CardCursorAdapter adapter;
+    private ProgressDialog dialog;
 
     public MainActivityFragment() {
     }
@@ -49,6 +51,9 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
                 View view = binding.getRoot();
 
         adapter = new CardCursorAdapter(getContext(), Carta.class);
+
+        dialog = new ProgressDialog(getContext());
+        dialog.setMessage(("Loading"));
 
         binding.lvCards.setAdapter(adapter);
         binding.lvCards.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -88,7 +93,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     @Override
     public void onStart() {
         super.onStart();
-        refresh();
+        //refresh();
     }
 
     private void refresh(){
@@ -116,6 +121,18 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     }
 
     private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            dialog.dismiss();
+        }
 
         @Override
         protected Void doInBackground(Void... voids) {
