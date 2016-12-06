@@ -60,9 +60,14 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Carta carta = (Carta) adapterView.getItemAtPosition(i);
-                Intent intent = new Intent(getContext(), DetailActivity.class);
-                intent.putExtra("Carta", carta);
-                startActivity(intent);
+
+                if (!esTablet()) {
+                    Intent intent = new Intent(getContext(), DetailActivity.class);
+                    intent.putExtra("Carta", carta);
+
+
+                    startActivity(intent);
+                }
             }
         });
 
@@ -70,6 +75,10 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
         return view;
     }
+
+    boolean esTablet() {
+                return getResources().getBoolean(R.bool.tablet);
+            }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
