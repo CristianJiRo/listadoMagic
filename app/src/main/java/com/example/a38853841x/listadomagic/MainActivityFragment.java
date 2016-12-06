@@ -107,12 +107,12 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     @Override
     public void onStart() {
         super.onStart();
-        //refresh();
+        refresh();
     }
 
     private void refresh(){
 
-        RefreshDataTask task = new RefreshDataTask();
+        RefreshDataTask task = new RefreshDataTask(getActivity().getApplicationContext());
         task.execute();
 
     }
@@ -134,62 +134,6 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
     }
 
-    private class RefreshDataTask extends AsyncTask<Void, Void, Void> {
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            dialog.show();
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            dialog.dismiss();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String color = preferences.getString("colors", "Uncolor");
-            String rarity = preferences.getString("rarity", "any");
-
-            ArrayList<Carta> result;
-
-            if ((rarity.equals("any"))&& (color.equals("Uncolor"))){
-
-                result = MagicApi.getCartes();
-            }
-
-            else if (rarity.equals("Basic Land")){
-
-                result = MagicApi.getCartesFilterRarity(rarity);
-
-            }
-            else if (!(rarity.equals("any")) && (color.equals("Uncolor"))){
-
-                result = MagicApi.getCartesFilterRarity(rarity);
-
-            }
-
-            else  if ((rarity.equals("any"))&& !(color.equals("Uncolor"))){
-
-                result = MagicApi.getCartesFilterColor(color);
-
-            }
-
-            else {
-                result = MagicApi.getCartesFilters(color, rarity);
-
-            }
-
-            Log.d("DEBUG", result.toString());
-
-            DataManager.deleteCards(getContext());
-            DataManager.saveCards(result, getContext());
-
-            return null;
-        }
-    }
 }
 
