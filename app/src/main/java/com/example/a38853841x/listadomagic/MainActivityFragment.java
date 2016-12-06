@@ -81,6 +81,17 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         return view;
     }
 
+    @Events.Subscribe("Start-downloadinf-data")
+    void preRefresh(){
+        dialog.show();
+    }
+
+    @Events.Subscribe("finish-downloadin-data")
+    void afterRefresh(){
+        dialog.dismiss();
+    }
+
+
     boolean esTablet() {
                 return getResources().getBoolean(R.bool.tablet);
             }
@@ -107,7 +118,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     @Override
     public void onStart() {
         super.onStart();
-        refresh();
+        Events.register(this);
     }
 
     private void refresh(){
