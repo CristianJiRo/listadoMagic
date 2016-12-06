@@ -2,12 +2,14 @@ package com.example.a38853841x.listadomagic;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.provider.CalendarContract;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.alexvasilkov.events.Events;
 import com.bumptech.glide.Glide;
 import com.example.a38853841x.listadomagic.databinding.FragmentDetailBinding;
 
@@ -20,6 +22,12 @@ public class DetailActivityFragment extends Fragment {
     private FragmentDetailBinding binding;
 
     public DetailActivityFragment() {
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Events.register(this);
     }
 
     @Override
@@ -41,6 +49,11 @@ public class DetailActivityFragment extends Fragment {
         }
 
         return view;
+    }
+
+    @Events.Subscribe("card-selected")
+    private void onMovieSelected(Carta card) {
+        updateUi(card);
     }
 
     private void updateUi(Carta carta) {

@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import com.example.a38853841x.listadomagic.databinding.FragmentMainBinding;
 import java.util.ArrayList;
+import com.alexvasilkov.events.Events;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -68,6 +69,10 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
                     startActivity(intent);
                 }
+                else{
+                    Events.create("card-selected").param(carta).post();
+                }
+
             }
         });
 
