@@ -2,11 +2,13 @@ package com.example.a38853841x.listadomagic;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import com.alexvasilkov.events.Events;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Kamelot on 07/12/2016.
@@ -39,38 +41,14 @@ class RefreshDataTask extends AsyncTask<Void, Void, Void> {
 
         ArrayList<Carta> result;
 
-        if ((rarity.equals("any"))&& (color.equals("Uncolor"))){
-
             result = MagicApi.getCartes();
-        }
 
-        else if (rarity.equals("Basic Land")){
-
-            result = MagicApi.getCartesFilterRarity(rarity);
-
-        }
-        else if (!(rarity.equals("any")) && (color.equals("Uncolor"))){
-
-            result = MagicApi.getCartesFilterRarity(rarity);
-
-        }
-
-        else  if ((rarity.equals("any"))&& !(color.equals("Uncolor"))){
-
-            result = MagicApi.getCartesFilterColor(color);
-
-        }
-
-        else {
-            result = MagicApi.getCartesFilters(color, rarity);
-
-        }
-
-        Log.d("DEBUG", result.toString());
+      Log.d("DEBUG", result.toString());
 
         DataManager.deleteCards(context);
-        DataManager.saveCards(result, context);
+        DataManager.saveCards(result,context);
 
         return null;
+
     }
 }

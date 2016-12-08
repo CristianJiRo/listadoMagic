@@ -21,13 +21,46 @@ public class DataManager {
             cupboard().withContext(context).put(CARD_URI, Carta.class, cartas);
     }
 
-
     static void deleteCards(Context context) {
                 cupboard().withContext(context).delete(CARD_URI, "_id > ?", "1");
 
             }
-    static CursorLoader getCursorLoader(Context context) {
-        return new CursorLoader(context, CARD_URI, null, null, null, null);
-    }
+    static CursorLoader getCursorLoader(Context context, String color, String rarity) {
 
+        if ((rarity.equals("any"))&& (color.equals("Uncolor"))){
+
+            return new CursorLoader(context, CARD_URI, null, null, null, null);
+        }
+
+        else if (rarity.equals("Basic Land")){
+
+            String selectRarity = rarity != null ? "rarity = '" + rarity + "'" : null;
+           // result = MagicApi.getCartesFilterRarity(rarity);
+            return new CursorLoader(context, CARD_URI, null, selectRarity, null, null);
+
+        }
+        else if (!(rarity.equals("any")) && (color.equals("Uncolor"))){
+
+            String selectRarity = rarity != null ? "rarity = '" + rarity + "'" : null;
+            // result = MagicApi.getCartesFilterRarity(rarity);
+            return new CursorLoader(context, CARD_URI, null, selectRarity, null, null);
+
+        }
+
+        else  if ((rarity.equals("any"))&& !(color.equals("Uncolor"))){
+
+            String selectColor = rarity != null ? "color = '" + rarity + "'" : null;
+            //result = MagicApi.getCartesFilterColor(color);
+            return new CursorLoader(context, CARD_URI, null, selectColor, null, null);
+
+        }
+
+        else {
+            String selectColor = rarity != null ? "color = '" + rarity + "'" : null;
+            String selectRarity = rarity != null ? "rarity = '" + rarity + "'" : null;
+            return new CursorLoader(context, CARD_URI, null, selectColor + " AND" + selectColor, null, null);
+
+        }
+
+    }
 }

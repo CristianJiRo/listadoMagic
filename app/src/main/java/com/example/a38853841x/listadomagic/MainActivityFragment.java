@@ -130,7 +130,10 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return DataManager.getCursorLoader(getContext());
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String color = preferences.getString("colors", "Uncolor");
+        String rarity = preferences.getString("rarity", "any");
+        return DataManager.getCursorLoader(getContext(), color, rarity);
     }
 
     @Override
